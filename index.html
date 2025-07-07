@@ -463,147 +463,121 @@
     </style>
 </head>
 <body>
-    <div class="cookie-decoration decoration-1"></div>
-    <div class="cookie-decoration decoration-2"></div>
-    <div class="cookie-decoration decoration-3"></div>
-    
-    <div class="cookie-icon cookie-icon-1">
-        <i class="fas fa-cookie-bite"></i>
-    </div>
-    <div class="cookie-icon cookie-icon-2">
-        <i class="fas fa-cookie"></i>
-    </div>
-    
-    <div class="container">
-        <!-- <div class="left-panel">
-            <div class="logo">
-                <div class="logo-icon">
-                    <i class="fas fa-cookie-bite"></i>
-                </div>
-                <div class="logo-text">Cookie Delights</div>
-            </div>
-            
-            <div class="tagline">Handcrafted Cookies Made with Love</div>
-            
-            <p>Indulge in our premium selection of artisanal cookies, baked fresh daily using the finest ingredients and traditional recipes.</p>
-            
-            <div class="features">
-                <div class="feature">
-                    <i class="fas fa-heart"></i>
-                    <span>Made with organic ingredients</span>
-                </div>
-                <div class="feature">
-                    <i class="fas fa-truck"></i>
-                    <span>Free delivery on orders over $30</span>
-                </div>
-                <div class="feature">
-                    <i class="fas fa-star"></i>
-                    <span>Over 500 five-star reviews</span>
-                </div>
-                <div class="feature">
-                    <i class="fas fa-leaf"></i>
-                    <span>Eco-friendly packaging</span>
-                </div>
-            </div>
-        </div> -->
-        
-        <div class="right-panel">
-            <div class="form-header">
-                <h1>Order Delicious Cookies</h1>
-                <p>Fill out the form below and we'll prepare your order with care</p>
-            </div>
-            
-            <form action="https://your-n8n-domain/webhook/cookie-order" method="post">
-                <div class="form-group">
-                    <label for="name">Your Name</label>
-                    <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="contact">Contact Number</label>
-                    <input type="tel" id="contact" name="contact" class="form-control" placeholder="Enter your phone number" required>
-                </div>
-                
-                <div class="form-group">
-                    <label>Select Flavors <span class="flavor-tag">Multiple selection</span></label>
-                    <select name="items" multiple class="form-control">
-                        <option>Matcha Oat</option>
-                        <option>Ube Glazed</option>
-                        <option>Chocolate Fudge</option>
-                        <option>Choco Chip</option>
-                        <option>Ube Almond</option>
-                        <option>Matcha Almond</option>
-                        <option>Coffee Butterscotch</option>
-                        <option>Choco Almond</option>
-                        <option>Strawberry Cupcake</option>
-                        <option>Cheese Cupcake</option>
-                        <option>Carrot Cake</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="quantity">Quantity</label>
-                    <div class="quantity-selector">
-                        <button type="button" class="quantity-btn" id="decrease-qty">-</button>
-                        <input type="number" id="quantity" name="quantity" min="1" value="1" class="quantity-input" required>
-                        <button type="button" class="quantity-btn" id="increase-qty">+</button>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="notes">Special Instructions</label>
-                    <textarea id="notes" name="notes" class="form-control" rows="4" placeholder="Any special requests or dietary restrictions?"></textarea>
-                </div>
-                
-                <button type="submit" class="submit-btn">
-                    <i class="fas fa-shopping-bag"></i> Place Your Order
-                </button>
-            </form>
+  <!-- Decorations -->
+  <div class="cookie-decoration decoration-1"></div>
+  <div class="cookie-decoration decoration-2"></div>
+  <div class="cookie-decoration decoration-3"></div>
+  <div class="cookie-icon cookie-icon-1"><i class="fas fa-cookie-bite"></i></div>
+  <div class="cookie-icon cookie-icon-2"><i class="fas fa-cookie"></i></div>
+
+  <!-- Main Container -->
+  <div class="container">
+    <div class="right-panel">
+      <div class="form-header">
+        <h1>Order Delicious Cookies</h1>
+        <p>Fill out the form below and we'll prepare your order with care</p>
+      </div>
+
+      <form id="orderForm">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" required>
         </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="contact">Contact Number</label>
+          <input type="tel" id="contact" name="contact" class="form-control" placeholder="Enter your phone number" required>
+        </div>
+
+        <div class="form-group">
+          <label>Select Flavors <span class="flavor-tag">Multiple selection</span></label>
+          <select id="items" name="items" multiple class="form-control">
+            <option>Matcha Oat</option>
+            <option>Ube Glazed</option>
+            <option>Chocolate Fudge</option>
+            <option>Choco Chip</option>
+            <option>Ube Almond</option>
+            <option>Matcha Almond</option>
+            <option>Coffee Butterscotch</option>
+            <option>Choco Almond</option>
+            <option>Strawberry Cupcake</option>
+            <option>Cheese Cupcake</option>
+            <option>Carrot Cake</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="quantity">Quantity</label>
+          <div class="quantity-selector">
+            <button type="button" class="quantity-btn" id="decrease-qty">-</button>
+            <input type="number" id="quantity" name="quantity" min="1" value="1" class="quantity-input" required>
+            <button type="button" class="quantity-btn" id="increase-qty">+</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="notes">Special Instructions</label>
+          <textarea id="notes" name="notes" class="form-control" rows="4" placeholder="Any special requests or dietary restrictions?"></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">
+          <i class="fas fa-shopping-bag"></i> Place Your Order
+        </button>
+      </form>
     </div>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const decreaseBtn = document.getElementById('decrease-qty');
-            const increaseBtn = document.getElementById('increase-qty');
-            const quantityInput = document.getElementById('quantity');
-            
-            decreaseBtn.addEventListener('click', function() {
-                let currentValue = parseInt(quantityInput.value);
-                if (currentValue > 1) {
-                    quantityInput.value = currentValue - 1;
-                }
-            });
-            
-            increaseBtn.addEventListener('click', function() {
-                let currentValue = parseInt(quantityInput.value);
-                quantityInput.value = currentValue + 1;
-            });
-            
-            // Add subtle animations to form elements when focused
-            const formControls = document.querySelectorAll('.form-control');
-            formControls.forEach(control => {
-                control.addEventListener('focus', function() {
-                    this.parentElement.style.transform = 'translateY(-3px)';
-                });
-                
-                control.addEventListener('blur', function() {
-                    this.parentElement.style.transform = 'translateY(0)';
-                });
-            });
-            
-            // Prevent form submission for demo
-            const form = document.querySelector('form');
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Order submitted! This is a demo - in a real implementation, this would send to your n8n webhook.');
-            });
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const decreaseBtn = document.getElementById('decrease-qty');
+      const increaseBtn = document.getElementById('increase-qty');
+      const quantityInput = document.getElementById('quantity');
+
+      decreaseBtn.addEventListener('click', function () {
+        let currentValue = parseInt(quantityInput.value);
+        if (currentValue > 1) quantityInput.value = currentValue - 1;
+      });
+
+      increaseBtn.addEventListener('click', function () {
+        let currentValue = parseInt(quantityInput.value);
+        quantityInput.value = currentValue + 1;
+      });
+
+      const form = document.getElementById('orderForm');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const data = {
+          name: form.name.value,
+          email: form.email.value,
+          contact: form.contact.value,
+          items: Array.from(form.items.selectedOptions).map(o => o.value).join(", "),
+          quantity: form.quantity.value,
+          notes: form.notes.value
+        };
+
+        fetch("https://docs.google.com/spreadsheets/d/10ap_v5s-5pG8vkB-MwEtqwEVA-aRMmUKMT9m_XnnmYY/edit?usp=sharing", {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        })
+        .then(res => res.text())
+        .then(msg => {
+          alert("✅ Order received!");
+          form.reset();
+        })
+        .catch(err => {
+          alert("❌ Error: " + err.message);
         });
-    </script>
+      });
+    });
+  </script>
 </body>
 </html>
