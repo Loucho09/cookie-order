@@ -147,8 +147,31 @@
             outline: none;
         }
         
-        select.form-control {
-            height: 150px;
+        .checkbox-group {
+            background: #fcf7f2;
+            border: 2px solid #e9d8c5;
+            border-radius: 12px;
+            padding: 15px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .checkbox-item {
+            padding: 10px 5px;
+            border-bottom: 1px solid #e9d8c5;
+            display: flex;
+            align-items: center;
+        }
+        
+        .checkbox-item:last-child {
+            border-bottom: none;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            margin-right: 12px;
+            width: 20px;
+            height: 20px;
+            accent-color: var(--primary);
         }
         
         .submit-btn {
@@ -289,6 +312,29 @@
             border: 1px solid #e9d8c5;
         }
         
+        .success-message {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            display: none;
+            z-index: 1000;
+            animation: fadeInOut 3s ease;
+        }
+        
+        @keyframes fadeInOut {
+            0% { opacity: 0; top: -50px; }
+            10% { opacity: 1; top: 20px; }
+            90% { opacity: 1; top: 20px; }
+            100% { opacity: 0; top: -50px; }
+        }
+        
         /* Responsive Design */
         @media (max-width: 900px) {
             .container {
@@ -354,10 +400,6 @@
             .form-control {
                 padding: 12px;
                 font-size: 0.95rem;
-            }
-            
-            select.form-control {
-                height: 120px;
             }
             
             .submit-btn {
@@ -469,71 +511,138 @@
   <div class="cookie-decoration decoration-3"></div>
   <div class="cookie-icon cookie-icon-1"><i class="fas fa-cookie-bite"></i></div>
   <div class="cookie-icon cookie-icon-2"><i class="fas fa-cookie"></i></div>
+  
+  <!-- Success Message -->
+  <div class="success-message" id="successMessage">
+    <i class="fas fa-check-circle"></i> Order submitted successfully!
+  </div>
 
   <!-- Main Container -->
   <div class="container">
+    <!-- <div class="left-panel">
+      <div class="logo">
+        <div class="logo-icon"><i class="fas fa-cookie-bite"></i></div>
+        <div class="logo-text">Cookie Delights</div>
+      </div>
+      <div class="tagline">Handcrafted Artisan Cookies Made with Love</div>
+      <div class="features">
+        <div class="feature">
+          <i class="fas fa-seedling"></i>
+          <span>Fresh ingredients sourced locally</span>
+        </div>
+        <div class="feature">
+          <i class="fas fa-leaf"></i>
+          <span>Vegan and gluten-free options</span>
+        </div>
+        <div class="feature">
+          <i class="fas fa-truck"></i>
+          <span>Free delivery for orders over $30</span>
+        </div>
+        <div class="feature">
+          <i class="fas fa-heart"></i>
+          <span>Baked with passion daily</span>
+        </div>
+      </div>
+    </div> -->
+    
     <div class="right-panel">
       <div class="form-header">
         <h1>Order Delicious Cookies</h1>
         <p>Fill out the form below and we'll prepare your order with care</p>
       </div>
 
-      <form id="orderForm">
+      <!-- Updated Form with Google Forms Integration -->
+      <form action="https://docs.google.com/forms/d/e/1FAIpQLSfGQpI3v8X0VdJ7XgX0dZ0j7wV7XgX0dZ0j7wV7XgX0dZ0j7wV7/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
         <div class="form-group">
           <label for="name">Your Name</label>
-          <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" required>
+          <input type="text" id="name" name="entry.2005620554" class="form-control" placeholder="Enter your name" required>
         </div>
 
         <div class="form-group">
           <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
+          <input type="email" id="email" name="entry.1045781291" class="form-control" placeholder="Enter your email" required>
         </div>
 
         <div class="form-group">
           <label for="contact">Contact Number</label>
-          <input type="tel" id="contact" name="contact" class="form-control" placeholder="Enter your phone number" required>
+          <input type="tel" id="contact" name="entry.1166974658" class="form-control" placeholder="Enter your phone number" required>
         </div>
 
         <div class="form-group">
           <label>Select Flavors <span class="flavor-tag">Multiple selection</span></label>
-          <select id="items" name="items" multiple class="form-control">
-            <option>Matcha Oat</option>
-            <option>Ube Glazed</option>
-            <option>Chocolate Fudge</option>
-            <option>Choco Chip</option>
-            <option>Ube Almond</option>
-            <option>Matcha Almond</option>
-            <option>Coffee Butterscotch</option>
-            <option>Choco Almond</option>
-            <option>Strawberry Cupcake</option>
-            <option>Cheese Cupcake</option>
-            <option>Carrot Cake</option>
-          </select>
+          <div class="checkbox-group">
+            <div class="checkbox-item">
+              <input type="checkbox" id="matcha-oat" name="entry.1065046570" value="Matcha Oat">
+              <label for="matcha-oat">Matcha Oat</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="ube-glazed" name="entry.1065046570" value="Ube Glazed">
+              <label for="ube-glazed">Ube Glazed</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="chocolate-fudge" name="entry.1065046570" value="Chocolate Fudge">
+              <label for="chocolate-fudge">Chocolate Fudge</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="choco-chip" name="entry.1065046570" value="Choco Chip">
+              <label for="choco-chip">Choco Chip</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="ube-almond" name="entry.1065046570" value="Ube Almond">
+              <label for="ube-almond">Ube Almond</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="matcha-almond" name="entry.1065046570" value="Matcha Almond">
+              <label for="matcha-almond">Matcha Almond</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="coffee-butterscotch" name="entry.1065046570" value="Coffee Butterscotch">
+              <label for="coffee-butterscotch">Coffee Butterscotch</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="choco-almond" name="entry.1065046570" value="Choco Almond">
+              <label for="choco-almond">Choco Almond</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="strawberry-cupcake" name="entry.1065046570" value="Strawberry Cupcake">
+              <label for="strawberry-cupcake">Strawberry Cupcake</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="cheese-cupcake" name="entry.1065046570" value="Cheese Cupcake">
+              <label for="cheese-cupcake">Cheese Cupcake</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="carrot-cake" name="entry.1065046570" value="Carrot Cake">
+              <label for="carrot-cake">Carrot Cake</label>
+            </div>
+          </div>
         </div>
 
         <div class="form-group">
           <label for="quantity">Quantity</label>
           <div class="quantity-selector">
             <button type="button" class="quantity-btn" id="decrease-qty">-</button>
-            <input type="number" id="quantity" name="quantity" min="1" value="1" class="quantity-input" required>
+            <input type="number" id="quantity" name="entry.839337160" min="1" value="1" class="quantity-input" required>
             <button type="button" class="quantity-btn" id="increase-qty">+</button>
           </div>
         </div>
 
         <div class="form-group">
           <label for="notes">Special Instructions</label>
-          <textarea id="notes" name="notes" class="form-control" rows="4" placeholder="Any special requests or dietary restrictions?"></textarea>
+          <textarea id="notes" name="entry.839337160" class="form-control" rows="4" placeholder="Any special requests or dietary restrictions?"></textarea>
         </div>
 
         <button type="submit" class="submit-btn">
           <i class="fas fa-shopping-bag"></i> Place Your Order
         </button>
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
       </form>
     </div>
   </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
+      // Quantity selector functionality
       const decreaseBtn = document.getElementById('decrease-qty');
       const increaseBtn = document.getElementById('increase-qty');
       const quantityInput = document.getElementById('quantity');
@@ -548,34 +657,29 @@
         quantityInput.value = currentValue + 1;
       });
 
-      const form = document.getElementById('orderForm');
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        const data = {
-          name: form.name.value,
-          email: form.email.value,
-          contact: form.contact.value,
-          items: Array.from(form.items.selectedOptions).map(o => o.value).join(", "),
-          quantity: form.quantity.value,
-          notes: form.notes.value
-        };
-
-        fetch("https://docs.google.com/spreadsheets/d/10ap_v5s-5pG8vkB-MwEtqwEVA-aRMmUKMT9m_XnnmYY/edit?usp=sharing", {
-          method: "POST",
-          body: JSON.stringify(data),
-          headers: {
-            "Content-Type": "application/json"
-          }
-        })
-        .then(res => res.text())
-        .then(msg => {
-          alert("✅ Order received!");
+      // Handle form submission feedback
+      const form = document.querySelector('form');
+      const successMessage = document.getElementById('successMessage');
+      const hiddenIframe = document.getElementById('hidden_iframe');
+      
+      // Show success message when form is submitted
+      form.addEventListener('submit', function() {
+        // Show success message
+        successMessage.style.display = 'block';
+        
+        // Reset form after a delay
+        setTimeout(function() {
           form.reset();
-        })
-        .catch(err => {
-          alert("❌ Error: " + err.message);
-        });
+          successMessage.style.display = 'none';
+        }, 3000);
+      });
+
+      // Optional: Show success when iframe loads (more reliable but requires CORS)
+      hiddenIframe.addEventListener('load', function() {
+        successMessage.style.display = 'block';
+        setTimeout(function() {
+          successMessage.style.display = 'none';
+        }, 3000);
       });
     });
   </script>
